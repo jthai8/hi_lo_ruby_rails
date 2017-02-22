@@ -1,0 +1,6 @@
+<!-- Below will display the user's guess -->
+<!-- we use <%= %>  to pull from our ruby guess -->
+<p> Your number is <%= params[:guess]%> </p>
+<!-- Below will display the result of the game using instance variable @result-->
+<p> Result: <%= @result %> </p>
+<p> Attempts: <%= cookies[:counter] %> </p>
