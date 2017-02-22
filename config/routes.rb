@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get '/game/:guess' => 'game#guess'
-  #when you type /game/(a number) we want the application to go into the game controller and run the guess method
+  # get '/game/:guess' => 'game#guess'
+  # #when you type /game/(a number) we want the application to go into the game controller and run the guess method
+  # # get '/try/:guess' => 'game#try'
   # get '/try/:guess' => 'game#try'
-  get '/try/:guess' => 'game#try'
-  get '/new_game'=> 'game#reset'
   #created new /try route in order to reset game without providing number parameter
   get '/try' => 'game#try'
+  get '/new_game'=> 'game#reset'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

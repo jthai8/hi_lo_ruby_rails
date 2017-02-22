@@ -1,5 +1,7 @@
 class GameController < ApplicationController
   def try
+    #guess equals params[:guess] unless the value is nil
+    @guess = params[:guess] unless params[:guess].nil?
     #create counter variable
     @counter = cookies[:counter].to_i
     #Create and display a counter for the number of tries attempted.
@@ -19,9 +21,11 @@ class GameController < ApplicationController
     if cookies[:secret_number] == params[:guess]
       #if the guess equals the secret number, "you guessed the right number!"
       @result = "You guessed the right number!"
-    else
+    elsif cookies[:secret_number] > params[:guess]
       #if the guess does not equal the secret number, "Guess Again"
-      @result = "Guess Again"
+      @result = "Your number is too low. Guess Again"
+    elsif cookies[:secret_number] < params[:guess]
+      @result = "Your number is too high. Guess Again"
     end
     cookies[:counter] = @counter
     render 'try.html.erb'
