@@ -18,17 +18,19 @@ class GameController < ApplicationController
     end
 
     #On each call, check the secret number against the guess (the parameter).
-    if cookies[:secret_number] == params[:guess]
+    if @guess.nil?
+      render 'try.html.erb'
+    elsif cookies[:secret_number] == @guess
       #if the guess equals the secret number, "you guessed the right number!"
       @result = "You guessed the right number!"
-    elsif cookies[:secret_number] > params[:guess]
+    elsif cookies[:secret_number] > @guess
       #if the guess does not equal the secret number, "Guess Again"
       @result = "Your number is too low. Guess Again"
-    elsif cookies[:secret_number] < params[:guess]
+    elsif cookies[:secret_number] < @guess
       @result = "Your number is too high. Guess Again"
     end
     cookies[:counter] = @counter
-    render 'try.html.erb'
+    # render 'try.html.erb'
   end
 
   def reset

@@ -13,3 +13,8 @@ Your guess was: <%= @guess %>
 
 <p> Result: <%= @result %> </p>
 <p> Attempts: <%= cookies[:counter] %> </p>
+<% if cookies[:secret_number] == @guess %>
+  <form action="/new_game" method="get">
+    <input type="submit" value="Play Again!"/>
+  </form>
+<% end %>
